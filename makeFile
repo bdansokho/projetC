@@ -1,0 +1,38 @@
+bin/simulation : src/main.c lib/simulation.o lib/schedule.o lib/event.o lib/populus.o lib/sheep.o lib/virus.o lib/cell.o lib/bernoulli_distrib.o lib/gaussian_distrib.o lib/poisson_distrib.o lib/flat_distrib.o lib/stats.o
+	gcc -o bin/simulation -I include -L/usr/local/lib src/main.c lib/simulation.o lib/schedule.o lib/event.o lib/populus.o lib/sheep.o lib/virus.o lib/cell.o lib/bernoulli_distrib.o lib/gaussian_distrib.o lib/poisson_distrib.o lib/flat_distrib.o lib/stats.o -lgsl -lgslcblas -lm
+
+lib/simulation.o : src/simulation.c
+	gcc -c -o lib/simulation.o -I include src/simulation.c
+
+lib/schedule.o : src/schedule.c
+	gcc -c -I include -o lib/schedule.o src/schedule.c
+
+lib/cell.o : src/cell.c
+	gcc -c -I include -o lib/cell.o src/cell.c
+
+lib/event.o : src/event.c
+	gcc -c -I include -o lib/event.o src/event.c
+
+lib/populus.o : src/populus.c
+	gcc -c -I include -o lib/populus.o src/populus.c
+
+lib/sheep.o : src/sheep.c
+	gcc -c -I include -o lib/sheep.o src/sheep.c
+
+lib/virus.o : src/virus.c
+	gcc -c -I include -o lib/virus.o src/virus.c
+
+lib/poisson_distrib.o : src/poisson_distrib.c
+	gcc -c -I include -o lib/poisson_distrib.o  src/poisson_distrib.c
+
+lib/bernoulli_distrib.o : src/bernoulli_distrib.c
+	gcc -c -I include -o lib/bernoulli_distrib.o  src/bernoulli_distrib.c
+
+lib/gaussian_distrib.o : src/gaussian_distrib.c
+	gcc -c -I include -o lib/gaussian_distrib.o src/gaussian_distrib.c
+
+lib/flat_distrib.o : src/flat_distrib.c
+	gcc -c -o lib/flat_distrib.o -I include src/flat_distrib.c
+
+lib/stats.o : src/stats.c
+	gcc -c -o lib/stats.o -I include src/stats.c
